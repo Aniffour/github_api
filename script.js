@@ -32,27 +32,35 @@ btn.addEventListener(
                     p.innerText = `${list[i]} : ${finishData[list[i].replace(' ' , '_')]}`
                     document.body.append(p)
                 }
+                let hr = document.createElement('hr')
+                document.body.append(hr)
+               
             }
         ).catch(
            (reject)=>{
             let p =  document.createElement('p')
             p.innerText = reject
             document.body.append(p)
+            let hr = document.createElement('hr')
+            document.body.append(hr)
         }
 
         ).finally(
             _=> {
-                let clearBtn = document.createElement('button')
-                clearBtn.id = 'clear'
-                clearBtn.innerText = 'clear'
-                document.body.append(clearBtn)
-                let clear = document.getElementById('clear')
-                clear.addEventListener(
-                    'click' , 
-                    _=>{
-                        location.reload()
+                let checkBtn = document.getElementById('clear')
+                if(checkBtn === null){
+                    let clearBtn = document.createElement('button')
+                    clearBtn.id = 'clear'
+                    clearBtn.innerText = 'clear'
+                    mainDev.append(clearBtn)
+                    let clear = document.getElementById('clear')
+                    clear.addEventListener(
+                        'click' , 
+                        _=>{
+                            location.reload()
+                        }
+                    )
                     }
-                )
             }
         )
        }
